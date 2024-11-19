@@ -39,6 +39,8 @@
 #billboard img {
     border-radius: 15px; /* Redondea las esquinas con un radio de 10px */
     overflow: hidden;
+    width: 350px;
+    height: 232.93px;
 }
 
 .categories img{
@@ -46,3 +48,57 @@
     overflow: hidden;
 }
 
+#related-products::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.6) 100%), url('/images/fondo_seiko.png') no-repeat center center;
+    background-size: cover;
+    opacity: 1; /* Establece opacidad en toda la capa */
+    z-index: 0; /* Asegura que el fondo esté detrás del contenido */
+}
+
+#related-products a {
+    color: #ffffff; /* Asegura que el texto sea blanco y visible sobre el fondo oscuro */
+}
+
+#related-products h4 {
+   z-index: 3;
+   color: #ffffff;
+}
+
+#related-products img{
+    border-radius: 15px; /* Redondea las esquinas con un radio de 10px */
+    overflow: hidden;
+}
+
+.logo-bar img{
+    width: 160px;
+    height: 80px;
+}
+
+#new-arrival img{
+    width: 378px;
+    height: 460.75px;
+}
+
+#best-sellers img{
+    width: 338px;
+    height: 450.55px;
+}
+
+#form select{
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 0px solid #ddd;
+    box-sizing: border-box;
+}
+
+.col-md-4 h4{
+    text-align: center;
+}
