@@ -880,6 +880,8 @@ a {
 .image-zoom-effect {
   display: flex;
   flex-wrap: wrap;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 .image-zoom-effect .image-holder {
@@ -888,21 +890,27 @@ a {
   overflow: hidden;
   transform: scale(1);
   transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 15px
 }
 
 .image-zoom-effect:hover .image-holder {
   transform: scale(0.95);
+  border-radius: 15px
 }
 
 .image-zoom-effect img {
+  width: 100%;
+  height: auto;
   transform: scale(1);
   will-change: transform;
   transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   z-index: 0;
+  border-radius: inherit;
 }
 
 .image-zoom-effect:hover img {
   transform: scale(1.1);
+  border-radius: inherit;
 }
 
 

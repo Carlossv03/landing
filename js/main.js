@@ -57,17 +57,16 @@ let getData = async () => {
 
         if(data != null) {
 
-            // Cuente el número de suscriptores registrados por fecha a partir del objeto data
+            // Contar el número de preferencia de los suscriptores registrados por fecha a partir del objeto data
             let countrelojfav = new Map()
             if (Object.keys(data).length > 0){
                 for (let key in data){
                     let {relojfav} = data[key]
-                    let count = countrelojfav.get ({relojfav}) || 0;
+                    let count = countrelojfav.get (relojfav) || 0;
                     countrelojfav.set(relojfav, count + 1)
                 }
             }
             // END
-
             // Genere y agregue filas de una tabla HTML para mostrar fechas y cantidades de suscriptores almacenadas 
             if (countrelojfav.size > 0) {
 
@@ -104,39 +103,71 @@ let ready = () => {
     // Recuperación de datos
     getData();
 }
-let loaded = () => {
-    let myform = document.getElementById('form')
-    myform.addEventListener("submit", (eventSubmit) =>{eventSubmit.preventDefault();  
 
-    var emailElement = document.querySelector('.form-control-lg')
-    var emailText = emailElement.value;
-    if (emailText.length === 0) {
-        emailElement.animate(
-            [
-                { transform: "translateX(0)" },
-                { transform: "translateX(50px)" },
-                { transform: "translateX(-50px)" },
-                { transform: "translateX(0)" }
-            ],
-            {
-                duration: 400,
-                easing: "linear",
-            }
-        )
-        emailElement.focus()
-        return;
-    }
-    let relojfav = document.getElementById("relojfav").value;
-        
+
+let loaded = () => {
+    
+    let myform = document.getElementById('form')
+    myform.addEventListener("submit", async (eventSubmit) =>{eventSubmit.preventDefault();  
+
+        var emailElement = document.querySelector('.form-control-lg')
+        var emailText = emailElement.value;
+        if (emailText.length === 0) {
+            emailElement.animate(
+                [
+                    { transform: "translateX(0)" },
+                    { transform: "translateX(50px)" },
+                    { transform: "translateX(-50px)" },
+                    { transform: "translateX(0)" }
+                ],
+                {
+                    duration: 400,
+                    easing: "linear",
+                }
+            )
+            emailElement.focus()
+            return;
+        }
+        let relojfav = document.getElementById("relojfav").value;
+        let input_email = document.getElementById("form_name").value;    
         if (relojfav === "no_selected") {
-        alert("Por favor, selecciona un reloj favorito.");
-        preventDefault();  // Evita el envío del formulario
+            alert("Por favor, selecciona un reloj favorito.");
+            return;  // Evita el envío del formulario
         }
 
+        try{
+            const response = await fetch(databaseURL, {
+                method: 'GET'
+            })
+    
+            if (!response.ok){
+                alert("Hemos experimentado un error, inténtelo de nuevo en unos minutos.");
+            }
+
+            const data = await response.json();
+
+            if(data != null){
+                if(Object.keys(data).length >0){
+                    for(let key in data){
+                        let {email} = data[key];
+                        if(input_email == email){
+                            alert("El correo ya se encuentra registrado, intenta con otro correo por favor.")
+                            return;
+                        }
+                    }
+                }
+            }
+
+        }catch(error){
+            alert('Hemos experimentado un error. ¡Vuelve pronto!');
+        }
+        
         sendData();
     })
 
 }
+
+
 
 window.addEventListener("DOMContentLoaded", ready)
 window.addEventListener("load", loaded)

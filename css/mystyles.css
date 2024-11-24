@@ -1,3 +1,46 @@
+.navbar{
+    position: fixed; /* Hace que la barra quede fija */
+    top: 0; /* Alinea la barra al borde superior de la ventana */
+    left: 0; /* Alinea la barra al borde izquierdo */
+    width: 100%; /* Ocupa todo el ancho */
+    z-index: 1000; /* Asegura que la barra esté encima de otros elementos */
+    background-color: #ffffff; /* Fija un color de fondo para que sea visible */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Agrega un efecto visual elegante */
+}
+
+#menu a{
+    position: relative;
+}
+
+#menu a:hover {
+    color: black; /* Cambia el color del texto al pasar el mouse */
+}
+
+#menu a:after {
+    content: ""; 
+    position: absolute; 
+    left: 0; 
+    bottom: -5px; 
+    width: 100%; 
+    height: 2px; 
+    background-color: black; 
+    transform: scaleX(0); 
+    transition: transform 0.3s ease; 
+}
+
+/* Muestra la barra al pasar el mouse */
+#menu a:hover:after {
+    transform: scaleX(1); /* Escala la barra a su tamaño completo */
+}
+
+body{
+    margin-top: 100px;
+}
+
+#lista-carrito{
+    padding-left: 75%;
+}
+
 #billboard {
     position:relative;
     padding-top: 5rem;
@@ -23,12 +66,12 @@
 }
 
 #billboard a {
-    color: #ffffff; /* Asegura que el texto sea blanco y visible sobre el fondo oscuro */
+    color: #ffffff; 
 }
 
 
 #billboard p {
-    color: #ffffff; /* Asegura que el texto sea blanco y visible sobre el fondo oscuro */
+    color: #ffffff; 
 }
 
 .icon-arrow{
@@ -37,14 +80,14 @@
 }
 
 #billboard img {
-    border-radius: 15px; /* Redondea las esquinas con un radio de 10px */
+    border-radius: 15px; 
     overflow: hidden;
-    width: 350px;
+    width: 100%;
     height: 232.93px;
 }
 
 .categories img{
-    border-radius: 15px; /* Redondea las esquinas con un radio de 10px */
+    border-radius: 15px; 
     overflow: hidden;
 }
 
@@ -61,6 +104,15 @@
     z-index: 0; /* Asegura que el fondo esté detrás del contenido */
 }
 
+
+.video-bg img{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    opacity: 1; /* Establece opacidad en toda la capa */
+    z-index: 0; /* Asegura que el fondo esté detrás del contenido */
+}
+
 #related-products a {
     color: #ffffff; /* Asegura que el texto sea blanco y visible sobre el fondo oscuro */
 }
@@ -70,10 +122,14 @@
    color: #ffffff;
 }
 
+
 #related-products img{
-    border-radius: 15px; /* Redondea las esquinas con un radio de 10px */
+    border-radius: 15px; 
     overflow: hidden;
+    width: 100%;
+    height: 100%;
 }
+
 
 .logo-bar img{
     width: 160px;
@@ -90,6 +146,69 @@
     height: 450.55px;
 }
 
+.we-help-section {
+	padding: 2rem 0;
+    background: #e7e6e2;
+    .btn_sub{
+        border-radius: 15px;
+        width: 100%;
+        background-color:#000000;
+        a{
+            color: white;
+        }
+    }
+    h1{
+        text-align: center;
+        padding-bottom: 4rem;
+    }
+	.imgs-grid {
+		display: grid;
+		grid-template-columns: repeat(27, 1fr);
+		position: relative;
+
+		&:before {
+			position: absolute;
+			content: "";
+			width: 255px;
+			height: 217px;
+			background-image: url('../images/dots-green.svg');
+			background-size: contain;
+			background-repeat: no-repeat;
+			transform: translate(-40%, -40%);
+			z-index: -1;
+		}
+
+		.grid {
+			position: relative;
+
+			img {
+				border-radius: 20px;
+				max-width: 100%;
+			}
+
+			&.grid-1 {
+				grid-column: 1 / span 18;
+				grid-row: 1 / span 27;
+			}
+
+			&.grid-2 {
+				grid-column: 19 / span 27;
+				grid-row: 1 / span 5;
+				padding-left: 20px;
+			}
+
+			&.grid-3 {
+				grid-column: 14 / span 16;
+				grid-row: 6 / span 27;
+				padding-top: 20px;
+			}
+
+		}
+	}
+}
+
+
+
 #form select{
     width: 100%;
     padding: 10px;
@@ -101,4 +220,54 @@
 
 .col-md-4 h4{
     text-align: center;
+}
+
+#registro{
+    background: radial-gradient(circle, #c89d53, #7a5324);
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+    margin: 20px 0;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+    color: #333;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+caption {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #555;
+}
+
+
+@media (min-width: 768px) and (max-width: 1400px) {
+    body {
+        margin-top: 200px; 
+    }
 }
